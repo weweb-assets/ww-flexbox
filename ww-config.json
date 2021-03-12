@@ -1,0 +1,17 @@
+{
+    "componentPath": "./src/wwElement.vue",
+    "editor": {
+        "label": {
+            "en": "Flexbox"
+        },
+        "otherOptions": {
+            "children": {
+                "bindable": "repeatable",
+                "label": {
+                    "en": "Content data",
+                    "fr": "Données"
+                }
+            }
+        }
+    }
+}

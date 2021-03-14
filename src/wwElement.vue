@@ -9,9 +9,25 @@
             :start="start"
             :pagination="!!content.pagination"
             :max="content.maxItem"
+            type="flex"
             @update:total="total = $event"
             ww-responsive="wwLayout"
-        ></wwLayout>
+        >
+            <template v-slot="{ item, index }">
+                <wwLayoutItem
+                    class="ww-flexbox__item"
+                    :style="getItemStyle(item, index)"
+                    :ww-responsive="`index-${index}`"
+                >
+                    <wwObject
+                        v-bind="item"
+                        class="ww-flexbox__object"
+                        :style="{ flex: wwObjectFlex }"
+                        :ww-responsive="`wwobject-${index}`"
+                    ></wwObject>
+                </wwLayoutItem>
+            </template>
+        </wwLayout>
         <Paginator v-if="content.pagination === 'bottom'" class="paginator"></Paginator>
         <!-- wwEditor:start -->
         <div class="ww-flexbox__menu">
@@ -36,6 +52,7 @@ export default {
         alignItems: wwLib.responsive('start'),
         maxItem: wwLib.responsive(50),
         pagination: wwLib.responsive(null),
+        pushLast: wwLib.responsive(false),
     },
     wwEditorConfiguration({ content }) {
         return getConfiguration(content);
@@ -63,8 +80,47 @@ export default {
             return {
                 flexDirection: this.content.direction,
                 justifyContent: this.content.justifyContent,
-                alignItems: this.content.direction === 'row' ? this.content.alignItems : 'stretch',
+                alignItems: this.content.alignItems,
             };
+        },
+        wwObjectFlex() {
+            return this.content.alignItems === 'stretch' ? '1' : 'unset';
+        },
+    },
+    methods: {
+        getItemStyle(item, index) {
+            const style = {
+                display: 'flex',
+                width: 'unset',
+            };
+
+            //Reverse
+            if (this.content.reverse) {
+                style.order = this.content.children.length - 1 - index;
+            }
+
+            //Push last
+            if (this.content.pushLast) {
+                const push = !this.content.reverse ? index === this.content.children.length - 1 : index === 0;
+                if (push) {
+                    if (this.content.direction === 'column') {
+                        style.marginTop = 'auto';
+                    } else {
+                        style.marginLeft = 'auto';
+                    }
+                }
+            }
+
+            //Flex
+            const wwObject = this.$store.getters['websiteData/getWwObject'](item.uid);
+            const width = wwLib.getResponsiveStyleProp({
+                store: this.$store,
+                style: (wwObject._state || {}).style || {},
+                prop: 'width',
+            });
+            if (width && width.endsWith('%')) style.width = width;
+
+            return style;
         },
     },
     watch: {
@@ -82,6 +138,14 @@ export default {
             }
             if (!newVal && oldVal && this.content.pagination) {
                 this.$emit('update-effect', { pagination: null });
+            }
+        },
+        'content.direction'(newDirection, oldDirection) {
+            if (this.wwEditorState.isACopy) {
+                return;
+            }
+            if (newDirection === 'column' && oldDirection !== newDirection && this.content.alignItems === 'baseline') {
+                this.$emit('update-effect', { alignItems: 'flex-start' });
             }
         },
     },

@@ -11,6 +11,19 @@ const ALIGN_ROW = {
         ],
     },
 };
+const ALIGN_COLUMN = {
+    label: { en: 'Alignement' },
+    type: 'TextRadioGroup',
+    options: {
+        choices: [
+            { value: 'flex-start', title: { en: 'Start', fr: 'Début' }, icon: 'align-x-start' },
+            { value: 'center', title: { en: 'Center', fr: 'Milieu' }, icon: 'align-x-center' },
+            { value: 'flex-end', title: { en: 'End', fr: 'Fin' }, icon: 'align-x-end' },
+            { value: 'stretch', title: { en: 'Stretch', fr: 'Stretch' }, icon: 'align-y-stretch' },
+        ],
+    },
+};
+
 const JUSTIFY_CONTENT_ROW = {
     label: { en: 'Justify' },
     type: 'TextRadioGroup',
@@ -50,6 +63,11 @@ const JUSTIFY_CONTENT_COLUMN = {
     },
 };
 
+const PUSH_LAST = {
+    label: { en: 'Push last to the end', fr: 'Push last to the end' },
+    type: 'OnOff',
+};
+
 export function getConfiguration(content) {
     return {
         menuOptions: {
@@ -77,7 +95,10 @@ export function getConfiguration(content) {
                       justifyContent: JUSTIFY_CONTENT_ROW,
                       alignItems: ALIGN_ROW,
                   }
-                : { justifyContent: JUSTIFY_CONTENT_COLUMN }),
+                : {
+                      justifyContent: JUSTIFY_CONTENT_COLUMN,
+                      alignItems: ALIGN_COLUMN,
+                  }),
             reverse: {
                 label: { en: 'Reverse order', fr: "Inverser l'ordre" },
                 type: 'TextRadioGroup',
@@ -88,6 +109,7 @@ export function getConfiguration(content) {
                     ],
                 },
             },
+            pushLast: PUSH_LAST,
             maxItems: {
                 label: { en: 'Number of items max', fr: 'Nombre maximal' },
                 type: 'Number',

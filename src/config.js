@@ -73,10 +73,7 @@ export function getConfiguration(content) {
         menuOptions: {
             quick: {
                 label: { en: 'Edit layout' },
-                sections:
-                    content.direction === 'row'
-                        ? ['direction', 'justifyContent', 'alignItems']
-                        : ['direction', 'justifyContent'],
+                sections: ['direction', 'justifyContent', 'alignItems'],
             },
         },
         settingsOptions: {

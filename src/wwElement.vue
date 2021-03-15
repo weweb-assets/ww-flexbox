@@ -195,5 +195,8 @@ export default {
             pointer-events: all;
         }
     }
+    .paginator {
+        margin: 0 auto;
+    }
 }
 </style>

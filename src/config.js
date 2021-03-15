@@ -63,11 +63,6 @@ const JUSTIFY_CONTENT_COLUMN = {
     },
 };
 
-const PUSH_LAST = {
-    label: { en: 'Push last to the end', fr: 'Push last to the end' },
-    type: 'OnOff',
-};
-
 export function getConfiguration(content) {
     return {
         menuOptions: {
@@ -76,7 +71,7 @@ export function getConfiguration(content) {
                 sections: ['direction', 'justifyContent', 'alignItems'],
             },
         },
-        settingsOptions: {
+        styleOptions: {
             direction: {
                 label: { en: 'Direction', fr: 'Direction' },
                 type: 'BigIconRadioGroup',
@@ -106,7 +101,12 @@ export function getConfiguration(content) {
                     ],
                 },
             },
-            pushLast: PUSH_LAST,
+            pushLast: {
+                label: { en: 'Push last to the end', fr: 'Push last to the end' },
+                type: 'OnOff',
+            },
+        },
+        settingsOptions: {
             maxItems: {
                 label: { en: 'Number of items max', fr: 'Nombre maximal' },
                 type: 'Number',

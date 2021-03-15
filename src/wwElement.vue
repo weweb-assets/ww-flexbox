@@ -9,7 +9,7 @@
             :start="start"
             :pagination="!!content.pagination"
             :max="content.maxItem"
-            type="flex"
+            :inheritFromElement="inheritFromElement"
             @update:total="total = $event"
             ww-responsive="wwLayout"
         >
@@ -67,6 +67,7 @@ export default {
         return {
             start: 0,
             total: 0,
+            inheritFromElement: ['width', 'display'],
         };
     },
     computed: {
@@ -89,10 +90,7 @@ export default {
     },
     methods: {
         getItemStyle(item, index) {
-            const style = {
-                display: 'flex',
-                width: 'unset',
-            };
+            const style = {};
 
             //Reverse
             if (this.content.reverse) {
@@ -110,15 +108,6 @@ export default {
                     }
                 }
             }
-
-            //Flex
-            const wwObject = this.$store.getters['websiteData/getWwObject'](item.uid);
-            const width = wwLib.getResponsiveStyleProp({
-                store: this.$store,
-                style: (wwObject._state || {}).style || {},
-                prop: 'width',
-            });
-            if (width && width.endsWith('%')) style.width = width;
 
             return style;
         },
@@ -161,6 +150,9 @@ export default {
         flex-wrap: wrap;
         height: 100%;
         width: 100%;
+    }
+    &__item {
+        display: flex;
     }
     .ww-flexbox__menu {
         pointer-events: auto;

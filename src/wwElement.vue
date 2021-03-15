@@ -82,6 +82,7 @@ export default {
                 flexDirection: this.content.direction,
                 justifyContent: this.content.justifyContent,
                 alignItems: this.content.alignItems,
+                flexWrap: this.content.direction === 'column' ? null : 'wrap',
             };
         },
         wwObjectFlex() {
@@ -107,6 +108,10 @@ export default {
                         style.marginLeft = 'auto';
                     }
                 }
+            }
+
+            if (this.content.direction === 'row') {
+                style.minWidth = '40px';
             }
 
             return style;
@@ -158,12 +163,8 @@ export default {
     box-sizing: border-box;
     &__dropzone {
         display: flex;
-        flex-wrap: wrap;
         height: 100%;
         width: 100%;
-    }
-    &__item {
-        display: flex;
     }
     .ww-flexbox__menu {
         pointer-events: auto;

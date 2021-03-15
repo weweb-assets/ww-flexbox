@@ -113,6 +113,13 @@ export default {
         },
     },
     watch: {
+        total(val, oldVal) {
+            if (val !== oldVal) {
+                this.start = 0;
+            }
+        },
+
+        /* wwEditor:start */
         'content.pagination'(isPaginated, wasPaginated) {
             if (isPaginated !== wasPaginated) {
                 this.start = 0;
@@ -140,6 +147,7 @@ export default {
                 this.$emit('update-effect', { alignItems: 'flex-start' });
             }
         },
+        /* wwEditor:end */
     },
 };
 </script>

@@ -114,6 +114,9 @@ export default {
     },
     watch: {
         'content.pagination'(isPaginated, wasPaginated) {
+            if (isPaginated !== wasPaginated) {
+                this.start = 0;
+            }
             if (this.wwEditorState.isACopy) {
                 return;
             }

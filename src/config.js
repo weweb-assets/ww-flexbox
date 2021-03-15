@@ -19,7 +19,7 @@ const ALIGN_COLUMN = {
             { value: 'flex-start', title: { en: 'Start', fr: 'Début' }, icon: 'align-x-start' },
             { value: 'center', title: { en: 'Center', fr: 'Milieu' }, icon: 'align-x-center' },
             { value: 'flex-end', title: { en: 'End', fr: 'Fin' }, icon: 'align-x-end' },
-            { value: 'stretch', title: { en: 'Stretch', fr: 'Stretch' }, icon: 'align-y-stretch' },
+            { value: 'stretch', title: { en: 'Stretch', fr: 'Stretch' }, icon: 'align-x-stretch' },
         ],
     },
 };

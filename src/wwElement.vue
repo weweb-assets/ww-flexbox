@@ -82,7 +82,7 @@ export default {
                 flexDirection: this.content.direction,
                 justifyContent: this.content.justifyContent,
                 alignItems: this.content.alignItems,
-                flexWrap: this.content.direction === 'column' ? null : 'wrap',
+                flexWrap: this.content.direction === 'column' ? 'no-wrap' : 'wrap',
             };
         },
         wwObjectFlex() {

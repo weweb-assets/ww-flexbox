@@ -49,7 +49,7 @@ export default {
         reverse: wwLib.responsive(false),
         direction: wwLib.responsive('row'),
         justifyContent: wwLib.responsive('center'),
-        alignItems: wwLib.responsive('start'),
+        alignItems: wwLib.responsive('stretch'),
         maxItem: wwLib.responsive(50),
         pagination: wwLib.responsive(null),
         pushLast: wwLib.responsive(false),
@@ -91,11 +91,17 @@ export default {
     },
     methods: {
         getItemStyle(item, index) {
-            const style = {};
+            const style = {
+                marginTop: 'unset',
+                marginLeft: 'unset',
+                minWidth: 'unset',
+            };
 
             //Reverse
             if (this.content.reverse) {
                 style.order = this.content.children.length - 1 - index;
+            } else {
+                style.order = index;
             }
 
             //Push last

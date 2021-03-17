@@ -30,7 +30,7 @@
         </wwLayout>
         <Paginator v-if="content.pagination === 'bottom'" class="paginator"></Paginator>
         <!-- wwEditor:start -->
-        <div class="ww-flexbox__menu">
+        <div class="ww-flexbox__menu" v-if="isEditing">
             <wwEditorIcon small name="flexbox"></wwEditorIcon>
         </div>
         <!-- wwEditor:end -->

@@ -69,6 +69,7 @@ export function getConfiguration(content) {
             quick: {
                 label: { en: 'Edit layout' },
                 sections: ['direction', 'justifyContent', 'alignItems'],
+                bind: [{ prop: 'children', label: { en: 'Repeat enclosed items' } }],
             },
         },
         styleOptions: {

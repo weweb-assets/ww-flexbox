@@ -138,9 +138,17 @@ export default {
             if (this.wwEditorState.isACopy) {
                 return;
             }
-            if (isPaginated && !wasPaginated && !this.content.maxItem) {
-                this.$emit('update-effect', { maxItem: 20 });
-            }
+
+            clearTimeout(this.isPaginatedTimeout);
+            this.isPaginatedTimeout = setTimeout(() => {
+                if (!isPaginated) {
+                    this.$emit('update-effect', { paginatorText: null, paginatorPrev: null, paginatorNext: null });
+                }
+
+                if (isPaginated && !wasPaginated && !this.content.maxItems) {
+                    this.$emit('update-effect', { maxItems: 20 });
+                }
+            }, 500);
         },
         'content.maxItem'(newVal, oldVal) {
             if (this.wwEditorState.isACopy) {

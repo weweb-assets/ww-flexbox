@@ -23,6 +23,16 @@ const ALIGN_COLUMN = {
         ],
     },
 };
+const FLEX_WRAP = {
+    label: { en: 'Wrap elements' },
+    type: 'TextRadioGroup',
+    options: {
+        choices: [
+            { title: 'off', value: false, label: 'Off' },
+            { title: 'on', value: true, default: true, label: 'On' },
+        ],
+    },
+};
 
 const JUSTIFY_CONTENT_ROW = {
     label: { en: 'Justify' },
@@ -87,6 +97,7 @@ export function getConfiguration(content) {
                 ? {
                       justifyContent: JUSTIFY_CONTENT_ROW,
                       alignItems: ALIGN_ROW,
+                      flexWrap: FLEX_WRAP,
                   }
                 : {
                       justifyContent: JUSTIFY_CONTENT_COLUMN,

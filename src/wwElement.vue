@@ -8,7 +8,7 @@
             :style="style"
             :start="start"
             :pagination="!!content.pagination"
-            :max="content.maxItem"
+            :max="content.maxItems"
             :inheritFromElement="inheritFromElement"
             @update:total="total = $event"
             ww-responsive="wwLayout"

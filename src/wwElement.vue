@@ -50,7 +50,7 @@ export default {
         direction: wwLib.responsive('row'),
         justifyContent: wwLib.responsive('center'),
         alignItems: wwLib.responsive('stretch'),
-        maxItem: wwLib.responsive(50),
+        maxItems: wwLib.responsive(50),
         pagination: wwLib.responsive(null),
         pushLast: wwLib.responsive(false),
     },
@@ -155,7 +155,7 @@ export default {
                 }
             }, 500);
         },
-        'content.maxItem'(newVal, oldVal) {
+        'content.maxItems'(newVal, oldVal) {
             if (this.wwEditorState.isACopy) {
                 return;
             }

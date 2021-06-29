@@ -147,11 +147,15 @@ export default {
             clearTimeout(this.isPaginatedTimeout);
             this.isPaginatedTimeout = setTimeout(() => {
                 if (!isPaginated) {
-                    this.$emit('update-effect', { paginatorText: null, paginatorPrev: null, paginatorNext: null });
+                    this.$emit('update:content:effect', {
+                        paginatorText: null,
+                        paginatorPrev: null,
+                        paginatorNext: null,
+                    });
                 }
 
                 if (isPaginated && !wasPaginated && !this.content.maxItems) {
-                    this.$emit('update-effect', { maxItems: 20 });
+                    this.$emit('update:content:effect', { maxItems: 20 });
                 }
             }, 500);
         },
@@ -160,7 +164,7 @@ export default {
                 return;
             }
             if (!newVal && oldVal && this.content.pagination) {
-                this.$emit('update-effect', { pagination: null });
+                this.$emit('update:content:effect', { pagination: null });
             }
         },
         'content.direction'(newDirection, oldDirection) {
@@ -168,7 +172,7 @@ export default {
                 return;
             }
             if (newDirection === 'column' && oldDirection !== newDirection && this.content.alignItems === 'baseline') {
-                this.$emit('update-effect', { alignItems: 'flex-start' });
+                this.$emit('update:content:effect', { alignItems: 'flex-start' });
             }
         },
         /* wwEditor:end */

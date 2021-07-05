@@ -9,11 +9,11 @@
             :start="start"
             :pagination="!!content.pagination"
             :max="content.maxItems"
-            :inheritFromElement="inheritFromElement"
-            @update:total="total = $event"
+            :inherit-from-element="inheritFromElement"
             ww-responsive="wwLayout"
+            @update:total="total = $event"
         >
-            <template v-slot="{ item, index }">
+            <template #default="{ item, index }">
                 <wwLayoutItem
                     class="ww-flexbox__item"
                     :style="getItemStyle(item, index)"
@@ -30,7 +30,7 @@
         </wwLayout>
         <Paginator v-if="content.pagination === 'bottom'" class="paginator"></Paginator>
         <!-- wwEditor:start -->
-        <div class="ww-flexbox__menu" v-if="isEditing">
+        <div v-if="isEditing" class="ww-flexbox__menu">
             <wwEditorIcon small name="border"></wwEditorIcon>
         </div>
         <!-- wwEditor:end -->
@@ -42,7 +42,6 @@ import Paginator from './Paginator.vue';
 import { getConfiguration } from './config.js';
 
 export default {
-    name: '__COMPONENT_NAME__',
     components: { Paginator },
     wwDefaultContent: {
         children: [],
@@ -60,9 +59,10 @@ export default {
     props: {
         content: { type: Object, required: true },
         /* wwEditor:start */
-        wwEditorState: Object,
+        wwEditorState: { type: Object, required: true },
         /* wwEditor:end */
     },
+    emits: ['update:content:effect', 'update:content'],
     data() {
         return {
             start: 0,
@@ -75,6 +75,7 @@ export default {
             /* wwEditor:start */
             return this.wwEditorState.editMode === wwLib.wwEditorHelper.EDIT_MODES.EDITION;
             /* wwEditor:end */
+            // eslint-disable-next-line no-unreachable
             return false;
         },
         style() {
@@ -92,40 +93,6 @@ export default {
         },
         wwObjectFlex() {
             return this.content.alignItems === 'stretch' ? '1' : 'unset';
-        },
-    },
-    methods: {
-        getItemStyle(item, index) {
-            const style = {
-                marginTop: 'unset',
-                marginLeft: 'unset',
-                minWidth: 'unset',
-            };
-
-            //Reverse
-            if (this.content.reverse) {
-                style.order = this.content.children.length - 1 - index;
-            } else {
-                style.order = index;
-            }
-
-            //Push last
-            if (this.content.pushLast) {
-                const push = !this.content.reverse ? index === this.content.children.length - 1 : index === 0;
-                if (push) {
-                    if (this.content.direction === 'column') {
-                        style.marginTop = 'auto';
-                    } else {
-                        style.marginLeft = 'auto';
-                    }
-                }
-            }
-
-            if (this.content.direction === 'row') {
-                style.minWidth = '40px';
-            }
-
-            return style;
         },
     },
     watch: {
@@ -176,6 +143,40 @@ export default {
             }
         },
         /* wwEditor:end */
+    },
+    methods: {
+        getItemStyle(item, index) {
+            const style = {
+                marginTop: 'unset',
+                marginLeft: 'unset',
+                minWidth: 'unset',
+            };
+
+            //Reverse
+            if (this.content.reverse) {
+                style.order = this.content.children.length - 1 - index;
+            } else {
+                style.order = index;
+            }
+
+            //Push last
+            if (this.content.pushLast) {
+                const push = !this.content.reverse ? index === this.content.children.length - 1 : index === 0;
+                if (push) {
+                    if (this.content.direction === 'column') {
+                        style.marginTop = 'auto';
+                    } else {
+                        style.marginLeft = 'auto';
+                    }
+                }
+            }
+
+            if (this.content.direction === 'row') {
+                style.minWidth = '40px';
+            }
+
+            return style;
+        },
     },
 };
 </script>

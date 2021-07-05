@@ -112,9 +112,9 @@ export default {
             !this.$parent.content.paginatorNext
         ) {
             const paginatorText = await wwLib.createElement('ww-text');
-            const paginatorPrev = await wwLib.createElement('ww-icon', {icon: "fas fa-angle-left"});
-            const paginatorNext = await wwLib.createElement('ww-icon', {icon: "fas fa-angle-right"});
-            this.$parent.$emit('update-effect', {
+            const paginatorPrev = await wwLib.createElement('ww-icon', { icon: 'fas fa-angle-left' });
+            const paginatorNext = await wwLib.createElement('ww-icon', { icon: 'fas fa-angle-right' });
+            this.$parent.$emit('update:content:effect', {
                 paginatorText,
                 paginatorPrev,
                 paginatorNext,

@@ -151,6 +151,7 @@ export default {
                 marginLeft: 'unset',
                 minWidth: 'unset',
                 alignItems: 'unset',
+                display: 'block',
             };
 
             //Reverse
@@ -177,6 +178,7 @@ export default {
             }
 
             if (this.content.alignItems === 'stretch') {
+                style.display = 'flex';
                 style.alignItems = 'stretch';
             }
 

@@ -150,6 +150,7 @@ export default {
                 marginTop: 'unset',
                 marginLeft: 'unset',
                 minWidth: 'unset',
+                alignItems: 'unset',
             };
 
             //Reverse
@@ -173,6 +174,10 @@ export default {
 
             if (this.content.direction === 'row') {
                 style.minWidth = '40px';
+            }
+
+            if (this.content.alignItems === 'stretch') {
+                style.alignItems = 'stretch';
             }
 
             return style;

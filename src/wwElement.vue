@@ -14,15 +14,11 @@
             @update:total="total = $event"
         >
             <template #default="{ item, index }">
-                <wwLayoutItem
-                    class="ww-flexbox__item"
-                    :style="getItemStyle(item, index)"
-                    :ww-responsive="`index-${index}`"
-                >
+                <wwLayoutItem class="ww-flexbox__item">
                     <wwObject
                         v-bind="item"
                         class="ww-flexbox__object"
-                        :style="{ flex: wwObjectFlex }"
+                        :style="getItemStyle(item, index)"
                         :ww-responsive="`wwobject-${index}`"
                     ></wwObject>
                 </wwLayoutItem>
@@ -177,10 +173,10 @@ export default {
                 style.minWidth = '40px';
             }
 
-            if (this.content.alignItems === 'stretch') {
-                style.display = 'flex';
-                style.alignItems = 'stretch';
-            }
+            // if (this.content.alignItems === 'stretch') {
+            //     style.display = 'flex';
+            //     style.alignItems = 'stretch';
+            // }
 
             return style;
         },

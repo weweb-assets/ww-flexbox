@@ -143,8 +143,6 @@ export default {
     methods: {
         getItemStyle(item, index) {
             const style = {
-                marginTop: null,
-                marginLeft: null,
                 minWidth: 'unset',
                 alignItems: 'unset',
                 display: 'block',

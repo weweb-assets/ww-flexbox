@@ -186,7 +186,11 @@ export default {
 .ww-flexbox {
     position: relative;
     box-sizing: border-box;
-
+    &__dropzone {
+        display: flex;
+        min-height: 100%;
+        min-width: 100%;
+    }
     .ww-flexbox__menu {
         pointer-events: auto;
         opacity: 0;

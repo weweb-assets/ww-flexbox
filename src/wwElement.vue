@@ -32,8 +32,6 @@
 </template>
 
 <script>
-import { getConfiguration } from './config.js';
-
 export default {
     wwDefaultContent: {
         children: [],
@@ -42,9 +40,6 @@ export default {
         justifyContent: wwLib.responsive('center'),
         alignItems: wwLib.responsive('stretch'),
         pushLast: wwLib.responsive(false),
-    },
-    wwEditorConfiguration({ content }) {
-        return getConfiguration(content);
     },
     props: {
         content: { type: Object, required: true },

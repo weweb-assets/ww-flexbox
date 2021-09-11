@@ -24,7 +24,7 @@ export default {
             options: {
                 type: 'Element',
             },
-            bindable: true,
+            bindable: 'repeatable',
             defaultValue: [],
         },
         direction: {

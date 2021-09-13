@@ -118,26 +118,14 @@ export default {
         },
         flexWrap: {
             label: { en: 'Wrap elements' },
-            type: 'TextRadioGroup',
-            options: {
-                choices: [
-                    { title: 'off', value: false, label: 'Off' },
-                    { title: 'on', value: true, default: true, label: 'On' },
-                ],
-            },
+            type: 'OnOff',
             hidden: content => content.direction !== 'row',
             responsive: true,
             defaultValue: true,
         },
         reverse: {
             label: { en: 'Reverse order', fr: "Inverser l'ordre" },
-            type: 'TextRadioGroup',
-            options: {
-                choices: [
-                    { title: 'off', value: false, default: true, label: 'Off' },
-                    { title: 'on', value: true, label: 'On' },
-                ],
-            },
+            type: 'OnOff',
             responsive: true,
             defaultValue: false,
         },

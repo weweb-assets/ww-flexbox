@@ -62,21 +62,27 @@ export default {
                         ],
                     };
                 } else {
-                    [
-                        { value: 'flex-start', title: { en: 'Start', fr: 'Début' }, icon: 'align-x-start-vertical' },
-                        { value: 'center', title: { en: 'Center', fr: 'Milieu' }, icon: 'align-x-center-vertical' },
-                        { value: 'flex-end', title: { en: 'End', fr: 'Fin' }, icon: 'align-x-end-vertical' },
-                        {
-                            value: 'space-around',
-                            title: { en: 'Space around', fr: 'Space around' },
-                            icon: 'align-x-space-around-vertical',
-                        },
-                        {
-                            value: 'space-between',
-                            title: { en: 'Space between', fr: 'Space between' },
-                            icon: 'align-x-space-between-vertical',
-                        },
-                    ];
+                    return {
+                        choices: [
+                            {
+                                value: 'flex-start',
+                                title: { en: 'Start', fr: 'Début' },
+                                icon: 'align-x-start-vertical',
+                            },
+                            { value: 'center', title: { en: 'Center', fr: 'Milieu' }, icon: 'align-x-center-vertical' },
+                            { value: 'flex-end', title: { en: 'End', fr: 'Fin' }, icon: 'align-x-end-vertical' },
+                            {
+                                value: 'space-around',
+                                title: { en: 'Space around', fr: 'Space around' },
+                                icon: 'align-x-space-around-vertical',
+                            },
+                            {
+                                value: 'space-between',
+                                title: { en: 'Space between', fr: 'Space between' },
+                                icon: 'align-x-space-between-vertical',
+                            },
+                        ],
+                    };
                 }
             },
             responsive: true,

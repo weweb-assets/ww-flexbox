@@ -33,14 +33,6 @@
 
 <script>
 export default {
-    wwDefaultContent: {
-        children: [],
-        reverse: wwLib.responsive(false),
-        direction: wwLib.responsive('row'),
-        justifyContent: wwLib.responsive('center'),
-        alignItems: wwLib.responsive('stretch'),
-        pushLast: wwLib.responsive(false),
-    },
     props: {
         content: { type: Object, required: true },
         /* wwEditor:start */

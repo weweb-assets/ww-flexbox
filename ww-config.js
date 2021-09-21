@@ -6,6 +6,7 @@ export default {
         label: {
             en: 'Flexbox',
         },
+        icon: 'border',
         menuOptions: {
             quick: {
                 label: { en: 'Edit layout' },

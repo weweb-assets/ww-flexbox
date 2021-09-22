@@ -20,10 +20,6 @@ export default {
                 en: 'Items',
                 fr: 'Items',
             },
-            type: 'Array',
-            options: {
-                type: 'Element',
-            },
             bindable: 'repeatable',
             defaultValue: [],
         },

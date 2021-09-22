@@ -21,7 +21,7 @@ export default {
                 en: 'Items',
                 fr: 'Items',
             },
-            noEdit: true,
+            noEdit: { en: 'Repeat element' },
             bindable: 'repeatable',
             defaultValue: [],
         },

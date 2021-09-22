@@ -21,6 +21,7 @@ export default {
                 en: 'Items',
                 fr: 'Items',
             },
+            noEdit: true,
             bindable: 'repeatable',
             defaultValue: [],
         },

@@ -174,7 +174,7 @@ export default {
             }
 
             if (this.content.direction === 'row') {
-                style.minWidth = '40px';
+                style.minWidth = '10px';
             }
 
             if (this.content.alignItems === 'stretch') {

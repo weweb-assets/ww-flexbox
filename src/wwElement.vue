@@ -1,17 +1,12 @@
 <template>
     <div class="ww-flexbox">
-        <Paginator v-if="content.pagination === 'top'" class="paginator"></Paginator>
         <wwLayout
             class="ww-flexbox__dropzone"
             path="children"
             :direction="content.direction"
             :style="style"
-            :start="start"
-            :pagination="!!content.pagination"
-            :max="content.maxItems"
             :inherit-from-element="inheritFromElement"
             ww-responsive="wwLayout"
-            @update:total="total = $event"
         >
             <template #default="{ item, index }">
                 <wwLayoutItem
@@ -28,7 +23,6 @@
                 </wwLayoutItem>
             </template>
         </wwLayout>
-        <Paginator v-if="content.pagination === 'bottom'" class="paginator"></Paginator>
         <!-- wwEditor:start -->
         <div v-if="isEditing" class="ww-flexbox__menu">
             <wwEditorIcon small name="border"></wwEditorIcon>
@@ -38,24 +32,7 @@
 </template>
 
 <script>
-import Paginator from './Paginator.vue';
-import { getConfiguration } from './config.js';
-
 export default {
-    components: { Paginator },
-    wwDefaultContent: {
-        children: [],
-        reverse: wwLib.responsive(false),
-        direction: wwLib.responsive('row'),
-        justifyContent: wwLib.responsive('center'),
-        alignItems: wwLib.responsive('stretch'),
-        maxItems: wwLib.responsive(50),
-        pagination: wwLib.responsive(null),
-        pushLast: wwLib.responsive(false),
-    },
-    wwEditorConfiguration({ content }) {
-        return getConfiguration(content);
-    },
     props: {
         content: { type: Object, required: true },
         /* wwEditor:start */
@@ -65,8 +42,6 @@ export default {
     emits: ['update:content:effect', 'update:content'],
     data() {
         return {
-            start: 0,
-            total: 0,
             inheritFromElement: ['width', 'display'],
         };
     },
@@ -96,44 +71,7 @@ export default {
         },
     },
     watch: {
-        total(val, oldVal) {
-            if (val !== oldVal) {
-                this.start = 0;
-            }
-        },
-
         /* wwEditor:start */
-        'content.pagination'(isPaginated, wasPaginated) {
-            if (isPaginated !== wasPaginated) {
-                this.start = 0;
-            }
-            if (this.wwEditorState.isACopy) {
-                return;
-            }
-
-            clearTimeout(this.isPaginatedTimeout);
-            this.isPaginatedTimeout = setTimeout(() => {
-                if (!isPaginated) {
-                    this.$emit('update:content:effect', {
-                        paginatorText: null,
-                        paginatorPrev: null,
-                        paginatorNext: null,
-                    });
-                }
-
-                if (isPaginated && !wasPaginated && !this.content.maxItems) {
-                    this.$emit('update:content:effect', { maxItems: 20 });
-                }
-            }, 500);
-        },
-        'content.maxItems'(newVal, oldVal) {
-            if (this.wwEditorState.isACopy) {
-                return;
-            }
-            if (!newVal && oldVal && this.content.pagination) {
-                this.$emit('update:content:effect', { pagination: null });
-            }
-        },
         'content.direction'(newDirection, oldDirection) {
             if (this.wwEditorState.isACopy) {
                 return;
@@ -226,9 +164,6 @@ export default {
             opacity: 1;
             pointer-events: all;
         }
-    }
-    .paginator {
-        margin: 0 auto;
     }
 }
 </style>

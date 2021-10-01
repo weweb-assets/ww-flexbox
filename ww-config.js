@@ -23,7 +23,7 @@ export default {
             },
             type: 'Info',
             options: {
-                text: { en: 'Repeat element' },
+                text: { en: 'Elements to repeat' },
             },
             bindable: 'repeatable',
             defaultValue: [],

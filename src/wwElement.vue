@@ -111,9 +111,9 @@ export default {
                 }
             }
 
-            if (this.content.direction === 'row') {
-                style.minWidth = '10px';
-            }
+            // if (this.content.direction === 'row') {
+            //     style.minWidth = '10px';
+            // }
 
             if (this.content.alignItems === 'stretch') {
                 style.display = 'flex';

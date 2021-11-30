@@ -69,6 +69,12 @@ export default {
         wwObjectFlex() {
             return this.content.alignItems === 'stretch' ? '1' : 'unset';
         },
+        children() {
+            if (!this.content.children || !Array.isArray(this.content.children)) {
+                return [];
+            }
+            return this.content.children;
+        },
     },
     watch: {
         /* wwEditor:start */
@@ -94,14 +100,14 @@ export default {
 
             //Reverse
             if (this.content.reverse) {
-                style.order = this.content.children.length - 1 - index;
+                style.order = this.children.length - 1 - index;
             } else {
                 style.order = index;
             }
 
             //Push last
             if (this.content.pushLast) {
-                const push = !this.content.reverse ? index === this.content.children.length - 1 : index === 0;
+                const push = !this.content.reverse ? index === this.children.length - 1 : index === 0;
                 if (push) {
                     if (this.content.direction === 'column') {
                         style.marginTop = 'auto';

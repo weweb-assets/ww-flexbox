@@ -1,6 +1,6 @@
 {
     "name": "ww-flexbox",
-    "version": "3.0.1",
+    "version": "3.1.1",
     "scripts": {
         "build": "weweb build",
         "serve": "weweb serve"

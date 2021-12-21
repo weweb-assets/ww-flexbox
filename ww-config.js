@@ -90,7 +90,7 @@ export default {
             defaultValue: 'center',
         },
         alignItems: {
-            label: { en: 'Alignement' },
+            label: { en: 'Alignment' },
             type: 'TextRadioGroup',
             options: content => {
                 if (content.direction === 'row') {

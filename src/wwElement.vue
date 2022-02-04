@@ -23,11 +23,6 @@
                 </wwLayoutItem>
             </template>
         </wwLayout>
-        <!-- wwEditor:start -->
-        <div v-if="isEditing" class="ww-flexbox__menu">
-            <wwEditorIcon small name="border"></wwEditorIcon>
-        </div>
-        <!-- wwEditor:end -->
     </div>
 </template>
 
@@ -140,36 +135,6 @@ export default {
         display: flex;
         height: 100%;
         width: 100%;
-    }
-    .ww-flexbox__menu {
-        pointer-events: auto;
-        opacity: 0;
-        pointer-events: none;
-        display: flex;
-        position: absolute;
-        border-radius: 100%;
-        padding: var(--ww-spacing-01);
-        transition: opacity 0.2s ease;
-        z-index: 11;
-        cursor: pointer;
-        background-color: var(--ww-color-blue-500);
-        color: white;
-        justify-content: center;
-        align-items: center;
-        left: 0;
-        top: 0;
-        transform: translate(-50%, -50%);
-        transition: transform 0.3s ease;
-        &:hover {
-            transform: translate(-50%, -50%) scale(1.3);
-            opacity: 1;
-        }
-    }
-    &:hover {
-        > .ww-flexbox__menu {
-            opacity: 1;
-            pointer-events: all;
-        }
     }
 }
 </style>

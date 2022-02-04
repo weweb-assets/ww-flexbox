@@ -14,6 +14,9 @@ export default {
                 bind: [{ prop: 'children', label: { en: 'Repeat enclosed items' } }],
             },
         },
+        bubble: {
+            icon: 'border',
+        },
     },
     properties: {
         children: {

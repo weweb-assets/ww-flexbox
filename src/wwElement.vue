@@ -88,7 +88,6 @@ export default {
             const style = {
                 marginTop: 'unset',
                 marginLeft: 'unset',
-                minWidth: 'unset',
                 alignItems: 'unset',
                 display: 'block',
             };
@@ -111,10 +110,6 @@ export default {
                     }
                 }
             }
-
-            // if (this.content.direction === 'row') {
-            //     style.minWidth = '10px';
-            // }
 
             if (this.content.alignItems === 'stretch') {
                 style.display = 'flex';

@@ -7,13 +7,6 @@ export default {
             en: 'Flexbox',
         },
         icon: 'border',
-        menuOptions: {
-            quick: {
-                label: { en: 'Edit layout' },
-                sections: ['direction', 'justifyContent', 'alignItems'],
-                bind: [{ prop: 'children', label: { en: 'Repeat enclosed items' } }],
-            },
-        },
         bubble: {
             icon: 'border',
         },

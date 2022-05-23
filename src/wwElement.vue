@@ -62,7 +62,7 @@ export default {
             };
         },
         wwObjectFlex() {
-            return this.content.alignItems === 'stretch' ? '1' : 'unset';
+            return this.content.alignItems === 'stretch' ? '1' : '';
         },
         children() {
             if (!this.content.children || !Array.isArray(this.content.children)) {

@@ -14,12 +14,7 @@
                     :style="getItemStyle(item, index)"
                     :ww-responsive="`index-${index}`"
                 >
-                    <wwObject
-                        v-bind="item"
-                        class="ww-flexbox__object"
-                        :style="{ flex: wwObjectFlex }"
-                        :ww-responsive="`wwobject-${index}`"
-                    ></wwObject>
+                    <wwObject v-bind="item" class="ww-flexbox__object" :ww-responsive="`wwobject-${index}`"></wwObject>
                 </wwLayoutItem>
             </template>
         </wwLayout>
@@ -61,9 +56,9 @@ export default {
                         : 'wrap',
             };
         },
-        wwObjectFlex() {
-            return this.content.alignItems === 'stretch' ? '1' : '';
-        },
+        // wwObjectFlex() {
+        //     return this.content.alignItems === 'stretch' ? '1' : '';
+        // },
         children() {
             if (!this.content.children || !Array.isArray(this.content.children)) {
                 return [];

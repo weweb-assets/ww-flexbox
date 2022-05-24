@@ -9,12 +9,13 @@
             ww-responsive="wwLayout"
         >
             <template #default="{ item, index }">
-                <wwLayoutItem
-                    class="ww-flexbox__item"
-                    :style="getItemStyle(item, index)"
-                    :ww-responsive="`index-${index}`"
-                >
-                    <wwObject v-bind="item" class="ww-flexbox__object" :ww-responsive="`wwobject-${index}`"></wwObject>
+                <wwLayoutItem class="ww-flexbox__item" :ww-responsive="`index-${index}`">
+                    <wwObject
+                        v-bind="item"
+                        :extra-style="getItemStyle(item, index)"
+                        class="ww-flexbox__object"
+                        :ww-responsive="`wwobject-${index}`"
+                    ></wwObject>
                 </wwLayoutItem>
             </template>
         </wwLayout>
@@ -80,11 +81,7 @@ export default {
     },
     methods: {
         getItemStyle(item, index) {
-            const style = {
-                marginTop: 'unset',
-                marginLeft: 'unset',
-                alignItems: 'unset',
-            };
+            const style = {};
 
             //Reverse
             if (this.content.reverse) {

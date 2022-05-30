@@ -65,7 +65,7 @@ export default {
             return this.content.children;
         },
         isFixed() {
-            return this.wwElementState.wwProps.isFixed;
+            return this.wwElementState.props.isFixed;
         },
     },
     watch: {

@@ -21,6 +21,7 @@ export default {
             options: {
                 text: { en: 'Elements to repeat' },
             },
+            hidden: (content, sidePanelContent, boundProps, wwProps) => !!(wwProps && wwProps.isFixed),
             bindable: 'repeatable',
             defaultValue: [],
         },

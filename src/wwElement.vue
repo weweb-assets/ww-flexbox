@@ -6,6 +6,7 @@
             :direction="content.direction"
             :style="style"
             :inherit-from-element="inheritFromElement"
+            :disable-edit="isFixed"
             ww-responsive="wwLayout"
         >
             <template #default="{ item, index }">
@@ -14,6 +15,7 @@
                     :extra-style="getItemStyle(index)"
                     class="ww-flexbox__object"
                     :ww-responsive="`wwobject-${index}`"
+                    @click="onElementClick(item.uid, index)"
                 ></wwElement>
             </template>
         </wwLayout>
@@ -24,11 +26,12 @@
 export default {
     props: {
         content: { type: Object, required: true },
+        wwElementState: { type: Object, required: true },
         /* wwEditor:start */
         wwEditorState: { type: Object, required: true },
         /* wwEditor:end */
     },
-    emits: ['update:content:effect', 'update:content'],
+    emits: ['update:content:effect', 'update:content', 'element-event'],
     data() {
         return {
             inheritFromElement: ['width', 'display'],
@@ -60,6 +63,9 @@ export default {
                 return [];
             }
             return this.content.children;
+        },
+        isFixed() {
+            return this.wwElementState.wwProps.isFixed;
         },
     },
     watch: {
@@ -98,6 +104,9 @@ export default {
             }
 
             return style;
+        },
+        onElementClick(uid, index) {
+            this.$emit('element-event', { type: 'click', uid, index });
         },
     },
 };

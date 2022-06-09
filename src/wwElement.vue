@@ -9,14 +9,12 @@
             ww-responsive="wwLayout"
         >
             <template #default="{ item, index }">
-                <wwLayoutItem class="ww-flexbox__item" :ww-responsive="`index-${index}`">
-                    <wwObject
-                        v-bind="item"
-                        :extra-style="getItemStyle(item, index)"
-                        class="ww-flexbox__object"
-                        :ww-responsive="`wwobject-${index}`"
-                    ></wwObject>
-                </wwLayoutItem>
+                <wwElement
+                    v-bind="item"
+                    :extra-style="getItemStyle(item, index)"
+                    class="ww-flexbox__object"
+                    :ww-responsive="`wwobject-${index}`"
+                ></wwElement>
             </template>
         </wwLayout>
     </div>
@@ -120,9 +118,6 @@ export default {
         display: flex;
         height: 100%;
         width: 100%;
-    }
-    &__item {
-        display: flex;
     }
 }
 </style>

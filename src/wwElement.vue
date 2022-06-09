@@ -11,9 +11,9 @@
             <template #default="{ item, index }">
                 <wwElement
                     v-bind="item"
+                    :extra-style="getItemStyle(item, index)"
                     class="ww-flexbox__object"
                     :ww-responsive="`wwobject-${index}`"
-                    :extra-style="getItemStyle(item, index)"
                 ></wwElement>
             </template>
         </wwLayout>

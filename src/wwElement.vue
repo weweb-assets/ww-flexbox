@@ -55,9 +55,9 @@ export default {
                         : 'wrap',
             };
         },
-        // wwObjectFlex() {
-        //     return this.content.alignItems === 'stretch' ? '1' : '';
-        // },
+        wwObjectFlex() {
+            return this.content.alignItems === 'stretch' ? '1' : 'unset';
+        },
         children() {
             if (!this.content.children || !Array.isArray(this.content.children)) {
                 return [];
@@ -101,6 +101,7 @@ export default {
             }
 
             if (this.content.alignItems === 'stretch') {
+                style.display = 'flex';
                 style.alignItems = 'stretch';
             }
 

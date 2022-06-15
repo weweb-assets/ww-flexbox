@@ -11,9 +11,9 @@
             <template #default="{ item, index }">
                 <wwElement
                     v-bind="item"
+                    :extra-style="getItemStyle(index)"
                     class="ww-flexbox__object"
                     :ww-responsive="`wwobject-${index}`"
-                    :extra-style="getItemStyle(item, index)"
                 ></wwElement>
             </template>
         </wwLayout>
@@ -55,9 +55,6 @@ export default {
                         : 'wrap',
             };
         },
-        // wwObjectFlex() {
-        //     return this.content.alignItems === 'stretch' ? '1' : '';
-        // },
         children() {
             if (!this.content.children || !Array.isArray(this.content.children)) {
                 return [];
@@ -78,7 +75,7 @@ export default {
         /* wwEditor:end */
     },
     methods: {
-        getItemStyle(item, index) {
+        getItemStyle(index) {
             const style = {};
 
             //Reverse

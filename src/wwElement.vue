@@ -100,10 +100,6 @@ export default {
                 }
             }
 
-            if (this.content.alignItems === 'stretch') {
-                style.alignItems = 'stretch';
-            }
-
             return style;
         },
     },

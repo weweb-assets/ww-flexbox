@@ -9,18 +9,12 @@
             ww-responsive="wwLayout"
         >
             <template #default="{ item, index }">
-                <wwLayoutItem
-                    class="ww-flexbox__item"
-                    :style="getItemStyle(item, index)"
-                    :ww-responsive="`index-${index}`"
-                >
-                    <wwObject
-                        v-bind="item"
-                        class="ww-flexbox__object"
-                        :style="{ flex: wwObjectFlex }"
-                        :ww-responsive="`wwobject-${index}`"
-                    ></wwObject>
-                </wwLayoutItem>
+                <wwElement
+                    v-bind="item"
+                    :extra-style="getItemStyle(index)"
+                    class="ww-flexbox__object"
+                    :ww-responsive="`wwobject-${index}`"
+                ></wwElement>
             </template>
         </wwLayout>
     </div>
@@ -61,9 +55,6 @@ export default {
                         : 'wrap',
             };
         },
-        wwObjectFlex() {
-            return this.content.alignItems === 'stretch' ? '1' : 'unset';
-        },
         children() {
             if (!this.content.children || !Array.isArray(this.content.children)) {
                 return [];
@@ -84,13 +75,8 @@ export default {
         /* wwEditor:end */
     },
     methods: {
-        getItemStyle(item, index) {
-            const style = {
-                marginTop: 'unset',
-                marginLeft: 'unset',
-                alignItems: 'unset',
-                display: 'block',
-            };
+        getItemStyle(index) {
+            const style = {};
 
             //Reverse
             if (this.content.reverse) {
@@ -109,11 +95,6 @@ export default {
                         style.marginLeft = 'auto';
                     }
                 }
-            }
-
-            if (this.content.alignItems === 'stretch') {
-                style.display = 'flex';
-                style.alignItems = 'stretch';
             }
 
             return style;

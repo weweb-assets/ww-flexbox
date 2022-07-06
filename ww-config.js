@@ -37,20 +37,8 @@ export default {
             responsive: true,
             defaultValue: 'row',
         },
-        columnGap: {
-            label: 'Vertical Gap',
-            type: 'Length',
-            options: {
-                unitChoices: [
-                    { value: 'px', label: 'px', min: 0, max: 100 },
-                    { value: '%', label: '%', min: 0, max: 100, digits: 2 },
-                    { value: 'em', label: 'em', min: 0, max: 10, digits: 2 },
-                    { value: 'rem', label: 'rem', min: 0, max: 10, digits: 2 },
-                ],
-            },
-        },
-        rowGap: {
-            label: 'Horizontal Gap',
+        gap: {
+            label: 'Gap',
             type: 'Length',
             options: {
                 unitChoices: [

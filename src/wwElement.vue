@@ -48,8 +48,7 @@ export default {
                 flexDirection: this.content.direction,
                 justifyContent: this.content.justifyContent,
                 alignItems: this.content.alignItems,
-                columnGap: this.content.columnGap,
-                rowGap: this.content.rowGap,
+                gap: this.content.gap,
                 flexWrap:
                     this.content.direction === 'column'
                         ? 'nowrap'

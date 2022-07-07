@@ -1,25 +1,23 @@
 <template>
-    <div class="ww-flexbox">
-        <wwLayout
-            class="ww-flexbox__dropzone"
-            path="children"
-            :direction="content.direction"
-            :style="style"
-            :inherit-from-element="inheritFromElement"
-            :disable-edit="isFixed"
-            ww-responsive="wwLayout"
-        >
-            <template #default="{ item, index }">
-                <wwElement
-                    v-bind="item"
-                    :extra-style="getItemStyle(index)"
-                    class="ww-flexbox__object"
-                    :ww-responsive="`wwobject-${index}`"
-                    @click="onElementClick(item.uid, index)"
-                ></wwElement>
-            </template>
-        </wwLayout>
-    </div>
+    <wwLayout
+        class="ww-flexbox"
+        path="children"
+        :direction="content.direction"
+        :style="style"
+        :inherit-from-element="inheritFromElement"
+        :disable-edit="isFixed"
+        ww-responsive="wwLayout"
+    >
+        <template #default="{ item, index }">
+            <wwElement
+                v-bind="item"
+                :extra-style="getItemStyle(index)"
+                class="ww-flexbox__object"
+                :ww-responsive="`wwobject-${index}`"
+                @click="onElementClick(item.uid, index)"
+            ></wwElement>
+        </template>
+    </wwLayout>
 </template>
 
 <script>
@@ -30,6 +28,9 @@ export default {
         /* wwEditor:start */
         wwEditorState: { type: Object, required: true },
         /* wwEditor:end */
+    },
+    provide: {
+        __wwIsFlexboxChild: true,
     },
     emits: ['update:content:effect', 'update:content', 'element-event'],
     data() {
@@ -50,6 +51,8 @@ export default {
                 flexDirection: this.content.direction,
                 justifyContent: this.content.justifyContent,
                 alignItems: this.content.alignItems,
+                rowGap: this.content.rowGap,
+                columnGap: this.content.columnGap,
                 flexWrap:
                     this.content.direction === 'column'
                         ? 'nowrap'
@@ -114,12 +117,6 @@ export default {
 
 <style lang="scss" scoped>
 .ww-flexbox {
-    position: relative;
-    box-sizing: border-box;
-    &__dropzone {
-        display: flex;
-        height: 100%;
-        width: 100%;
-    }
+    display: flex;
 }
 </style>

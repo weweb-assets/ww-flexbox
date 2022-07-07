@@ -29,6 +29,9 @@ export default {
         wwEditorState: { type: Object, required: true },
         /* wwEditor:end */
     },
+    provide: {
+        __wwIsFlexboxChild: true,
+    },
     emits: ['update:content:effect', 'update:content', 'element-event'],
     data() {
         return {
@@ -48,7 +51,8 @@ export default {
                 flexDirection: this.content.direction,
                 justifyContent: this.content.justifyContent,
                 alignItems: this.content.alignItems,
-                gap: this.content.gap,
+                rowGap: this.content.rowGap,
+                columnGap: this.content.columnGap,
                 flexWrap:
                     this.content.direction === 'column'
                         ? 'nowrap'

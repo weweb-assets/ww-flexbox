@@ -11,6 +11,15 @@ export default {
             icon: 'border',
         },
     },
+    customStylePropertiesOrder: [
+        'children',
+        'direction',
+        ['rowGap', 'columnGap'],
+        ['justifyContent', 'alignItems'],
+        'flexWrap',
+        'reverse',
+        'pushLast',
+    ],
     properties: {
         children: {
             label: {
@@ -37,8 +46,20 @@ export default {
             responsive: true,
             defaultValue: 'row',
         },
-        gap: {
-            label: 'Gap',
+        rowGap: {
+            label: 'Rows gap',
+            type: 'Length',
+            options: {
+                unitChoices: [
+                    { value: 'px', label: 'px', min: 0, max: 100 },
+                    { value: '%', label: '%', min: 0, max: 100, digits: 2 },
+                    { value: 'em', label: 'em', min: 0, max: 10, digits: 2 },
+                    { value: 'rem', label: 'rem', min: 0, max: 10, digits: 2 },
+                ],
+            },
+        },
+        columnGap: {
+            label: 'Columns gap',
             type: 'Length',
             options: {
                 unitChoices: [

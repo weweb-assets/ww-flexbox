@@ -33,6 +33,13 @@ export default {
             hidden: (content, sidePanelContent, boundProps, wwProps) => !!(wwProps && wwProps.isFixed),
             bindable: 'repeatable',
             defaultValue: [],
+            /* wwEditor:start */
+            bindingValidation: {
+                type: 'array',
+                tooltip:
+                    'A collection of data in array format: \n\n `[{}, {}, ...] || ["string1", "string2", ...] || [1, 2, ...]`',
+            },
+            /* wwEditor:end */
         },
         direction: {
             label: { en: 'Direction', fr: 'Direction' },

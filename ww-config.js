@@ -47,7 +47,7 @@ export default {
             options: {
                 choices: [
                     { icon: 'arrow-down', value: 'column', label: 'Vertical' },
-                    { icon: 'arrow-forward', value: 'row', label: 'Horizontal' },
+                    { icon: 'arrow-right', value: 'row', label: 'Horizontal' },
                 ],
             },
             responsive: true,

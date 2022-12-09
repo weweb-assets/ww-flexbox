@@ -71,6 +71,8 @@ export default {
                     { value: 'rem', label: 'rem', min: 0, max: 10, digits: 2 },
                 ],
             },
+            states: true,
+            responsive: true,
         },
         columnGap: {
             label: 'Columns gap',
@@ -83,6 +85,8 @@ export default {
                     { value: 'rem', label: 'rem', min: 0, max: 10, digits: 2 },
                 ],
             },
+            states: true,
+            responsive: true,
         },
         justifyContent: {
             label: { en: 'Justify' },

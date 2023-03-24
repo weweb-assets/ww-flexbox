@@ -48,6 +48,18 @@ export default {
             },
             /* wwEditor:end */
         },
+        display: {
+            label: { en: 'Display' },
+            type: 'TextRadioGroup',
+            options: {
+                choices: [
+                    { value: 'flex', label: { en: 'Flex' } },
+                    { value: 'block', label: { en: 'Block' } },
+                ],
+            },
+            responsive: true,
+            defaultValue: 'flex',
+        },
         direction: {
             label: { en: 'Direction', fr: 'Direction' },
             type: 'BigIconRadioGroup',
@@ -59,6 +71,7 @@ export default {
             },
             responsive: true,
             defaultValue: 'row',
+            hidden: content => content.display === 'block',
         },
         rowGap: {
             label: 'Rows gap',
@@ -73,6 +86,7 @@ export default {
             },
             states: true,
             responsive: true,
+            hidden: content => content.display === 'block',
         },
         columnGap: {
             label: 'Columns gap',
@@ -87,6 +101,7 @@ export default {
             },
             states: true,
             responsive: true,
+            hidden: content => content.display === 'block',
         },
         justifyContent: {
             label: { en: 'Justify' },
@@ -136,6 +151,7 @@ export default {
             },
             responsive: true,
             defaultValue: 'center',
+            hidden: content => content.display === 'block',
         },
         alignItems: {
             label: { en: 'Alignment' },
@@ -164,11 +180,12 @@ export default {
             },
             responsive: true,
             defaultValue: 'stretch',
+            hidden: content => content.display === 'block',
         },
         flexWrap: {
             label: { en: 'Wrap elements' },
             type: 'OnOff',
-            hidden: content => content.direction !== 'row',
+            hidden: content => content.direction !== 'row' || content.display === 'block',
             responsive: true,
             defaultValue: true,
         },
@@ -177,12 +194,14 @@ export default {
             type: 'OnOff',
             responsive: true,
             defaultValue: false,
+            hidden: content => content.display === 'block',
         },
         pushLast: {
             label: { en: 'Push last to the end', fr: 'Push last to the end' },
             type: 'OnOff',
             responsive: true,
             defaultValue: false,
+            hidden: content => content.display === 'block',
         },
     },
 };

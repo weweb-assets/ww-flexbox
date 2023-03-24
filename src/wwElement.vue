@@ -47,19 +47,27 @@ export default {
             return false;
         },
         style() {
-            return {
-                flexDirection: this.content.direction,
-                justifyContent: this.content.justifyContent,
-                alignItems: this.content.alignItems,
-                rowGap: this.content.rowGap,
-                columnGap: this.content.columnGap,
-                flexWrap:
-                    this.content.direction === 'column'
-                        ? 'nowrap'
-                        : this.content.flexWrap === false
-                        ? 'nowrap'
-                        : 'wrap',
-            };
+            if(this.content.display === "block"){
+                return {
+                    display: "block"
+                };
+            }
+            else {
+                return {
+                    display: 'flex',
+                    flexDirection: this.content.direction,
+                    justifyContent: this.content.justifyContent,
+                    alignItems: this.content.alignItems,
+                    rowGap: this.content.rowGap,
+                    columnGap: this.content.columnGap,
+                    flexWrap:
+                        this.content.direction === 'column'
+                            ? 'nowrap'
+                            : this.content.flexWrap === false
+                            ? 'nowrap'
+                            : 'wrap',
+                };
+            }
         },
         children() {
             if (!this.content.children || !Array.isArray(this.content.children)) {
@@ -86,27 +94,31 @@ export default {
     methods: {
         getItemStyle(index) {
             const style = {};
-
-            //Reverse
-            if (this.content.reverse) {
-                style.order = this.children.length - 1 - index;
-            } else {
-                style.order = index;
+            if(this.content.display === 'block'){
+                return style;
             }
+            else {
+                //Reverse
+                if (this.content.reverse) {
+                    style.order = this.children.length - 1 - index;
+                } else {
+                    style.order = index;
+                }
 
-            //Push last
-            if (this.content.pushLast) {
-                const push = !this.content.reverse ? index === this.children.length - 1 : index === 0;
-                if (push) {
-                    if (this.content.direction === 'column') {
-                        style.marginTop = 'auto';
-                    } else {
-                        style.marginLeft = 'auto';
+                //Push last
+                if (this.content.pushLast) {
+                    const push = !this.content.reverse ? index === this.children.length - 1 : index === 0;
+                    if (push) {
+                        if (this.content.direction === 'column') {
+                            style.marginTop = 'auto';
+                        } else {
+                            style.marginLeft = 'auto';
+                        }
                     }
                 }
-            }
 
-            return style;
+                return style;
+            }
         },
         onElementClick(uid, index) {
             this.$emit('element-event', { type: 'click', uid, index });
@@ -114,9 +126,3 @@ export default {
     },
 };
 </script>
-
-<style lang="scss" scoped>
-.ww-flexbox {
-    display: flex;
-}
-</style>

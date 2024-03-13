@@ -1,7 +1,7 @@
 export default {
     options: {
         lazyHydrate: true,
-        layout: ['flex'],
+        layout: ['flex', 'grid'],
     },
     inherit: {
         type: 'ww-layout',

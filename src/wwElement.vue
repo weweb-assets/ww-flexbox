@@ -3,7 +3,6 @@
         class="ww-flexbox"
         path="children"
         :direction="content.direction"
-        :inherit-from-element="inheritFromElement"
         :disable-edit="isFixed"
         ww-responsive="wwLayout"
     >
@@ -29,11 +28,6 @@ export default {
         /* wwEditor:end */
     },
     emits: ['update:content:effect', 'update:content', 'element-event'],
-    data() {
-        return {
-            inheritFromElement: ['width', 'display'],
-        };
-    },
     computed: {
         children() {
             if (!this.content.children || !Array.isArray(this.content.children)) {
@@ -52,9 +46,3 @@ export default {
     },
 };
 </script>
-
-<style lang="scss" scoped>
-.ww-flexbox {
-    display: flex;
-}
-</style>

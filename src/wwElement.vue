@@ -6,6 +6,9 @@
         :disable-edit="isFixed"
         ww-responsive="wwLayout"
     >
+        <template #header>
+            <wwBackgroundVideo v-if="backgroundVideo" :video="backgroundVideo"></wwBackgroundVideo>
+        </template>
         <template #default="{ item, index, itemStyle }">
             <wwElement
                 v-bind="item"
@@ -37,6 +40,16 @@ export default {
         },
         isFixed() {
             return this.wwElementState.props.isFixed;
+        },
+        backgroundVideo() {
+            if (!this.content.backgroundVideo) return null;
+            return {
+                url: this.content.backgroundVideo,
+                loop: this.content.backgroundVideoLoop,
+                poster: this.content.backgroundVideoPoster,
+                preload: this.content.backgroundVideoPreload,
+                size: this.content.backgroundVideoSize,
+            };
         },
     },
     methods: {

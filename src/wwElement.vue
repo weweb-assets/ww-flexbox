@@ -5,6 +5,8 @@
         :direction="content.direction"
         :disable-edit="isFixed"
         ww-responsive="wwLayout"
+        :tag="tag"
+        v-bind="properties"
     >
         <template #header>
             <wwBackgroundVideo v-if="backgroundVideo" :video="backgroundVideo"></wwBackgroundVideo>
@@ -31,6 +33,15 @@ export default {
         /* wwEditor:end */
     },
     emits: ['update:content:effect', 'update:content', 'element-event'],
+    setup() {
+        const { hasLink, tag: linkTag, properties } = wwLib.wwElement.useLink();
+
+        return {
+            hasLink,
+            linkTag,
+            properties,
+        };
+    },
     computed: {
         children() {
             if (!this.content.children || !Array.isArray(this.content.children)) {
@@ -50,6 +61,9 @@ export default {
                 preload: this.content.backgroundVideoPreload,
                 size: this.content.backgroundVideoSize,
             };
+        },
+        tag() {
+            return this.hasLink ? this.linkTag : 'div';
         },
     },
     methods: {

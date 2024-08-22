@@ -35,11 +35,13 @@ export default {
     emits: ['update:content:effect', 'update:content', 'element-event'],
     setup() {
         const { hasLink, tag: linkTag, properties } = wwLib.wwElement.useLink();
+        const backgroundVideo = wwLib.wwElement.useBackgroundVideo();
 
         return {
             hasLink,
             linkTag,
             properties,
+            backgroundVideo,
         };
     },
     computed: {
@@ -51,16 +53,6 @@ export default {
         },
         isFixed() {
             return this.wwElementState.props.isFixed;
-        },
-        backgroundVideo() {
-            if (!this.content.backgroundVideo) return null;
-            return {
-                url: this.content.backgroundVideo,
-                loop: this.content.backgroundVideoLoop,
-                poster: this.content.backgroundVideoPoster,
-                preload: this.content.backgroundVideoPreload,
-                size: this.content.backgroundVideoSize,
-            };
         },
         tag() {
             return this.hasLink ? this.linkTag : 'div';

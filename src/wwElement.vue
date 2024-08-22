@@ -7,6 +7,7 @@
         ww-responsive="wwLayout"
         :tag="tag"
         v-bind="properties"
+        :class="hasLink ? '-link' : ''"
     >
         <template #header>
             <wwBackgroundVideo v-if="backgroundVideo" :video="backgroundVideo"></wwBackgroundVideo>
@@ -34,14 +35,14 @@ export default {
     },
     emits: ['update:content:effect', 'update:content', 'element-event'],
     setup() {
-        const { hasLink, tag: linkTag, properties } = wwLib.wwElement.useLink();
+        const { hasLink, tag, properties } = wwLib.wwElement.useLink();
         const backgroundVideo = wwLib.wwElement.useBackgroundVideo();
 
         return {
             hasLink,
-            linkTag,
             properties,
             backgroundVideo,
+            tag,
         };
     },
     computed: {
@@ -54,9 +55,6 @@ export default {
         isFixed() {
             return this.wwElementState.props.isFixed;
         },
-        tag() {
-            return this.hasLink ? this.linkTag : 'div';
-        },
     },
     methods: {
         onElementClick(uid, index) {
@@ -65,3 +63,9 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+.-link {
+    cursor: pointer;
+}
+</style>

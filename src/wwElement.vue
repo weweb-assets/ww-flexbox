@@ -7,7 +7,7 @@
         ww-responsive="wwLayout"
         :tag="tag"
         v-bind="properties"
-        :class="hasLink ? '-link' : ''"
+        :class="{ '-link': hasLink && !isEditing }"
     >
         <template #header>
             <wwBackgroundVideo v-if="backgroundVideo" :video="backgroundVideo"></wwBackgroundVideo>
@@ -55,6 +55,13 @@ export default {
         },
         isFixed() {
             return this.wwElementState.props.isFixed;
+        },
+        isEditing() {
+            /* wwEditor:start */
+            return this.wwEditorState.editMode === wwLib.wwEditorHelper.EDIT_MODES.EDITION;
+            /* wwEditor:end */
+            // eslint-disable-next-line no-unreachable
+            return false;
         },
     },
     methods: {

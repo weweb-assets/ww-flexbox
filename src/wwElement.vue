@@ -3,17 +3,23 @@
         class="ww-flexbox"
         path="children"
         :direction="content.direction"
-        :inherit-from-element="inheritFromElement"
         :disable-edit="isFixed"
         ww-responsive="wwLayout"
+        :tag="tag"
+        v-bind="properties"
+        :class="{ '-link': hasLink && !isEditing }"
     >
+        <template #header>
+            <wwBackgroundVideo v-if="backgroundVideo" :video="backgroundVideo"></wwBackgroundVideo>
+        </template>
         <template #default="{ item, index, itemStyle }">
             <wwElement
                 v-bind="item"
                 :extra-style="itemStyle"
                 class="ww-flexbox__object"
                 :ww-responsive="`wwobject-${index}`"
-                @click="onElementClick(item.uid, index)"
+                :data-ww-flexbox-index="index"
+                @click="onElementClick"
             ></wwElement>
         </template>
     </wwLayout>
@@ -29,9 +35,15 @@ export default {
         /* wwEditor:end */
     },
     emits: ['update:content:effect', 'update:content', 'element-event'],
-    data() {
+    setup() {
+        const { hasLink, tag, properties } = wwLib.wwElement.useLink();
+        const backgroundVideo = wwLib.wwElement.useBackgroundVideo();
+
         return {
-            inheritFromElement: ['width', 'display'],
+            hasLink,
+            properties,
+            backgroundVideo,
+            tag,
         };
     },
     computed: {
@@ -44,17 +56,30 @@ export default {
         isFixed() {
             return this.wwElementState.props.isFixed;
         },
+        isEditing() {
+            /* wwEditor:start */
+            return this.wwEditorState.editMode === wwLib.wwEditorHelper.EDIT_MODES.EDITION;
+            /* wwEditor:end */
+            // eslint-disable-next-line no-unreachable
+            return false;
+        },
     },
     methods: {
-        onElementClick(uid, index) {
-            this.$emit('element-event', { type: 'click', uid, index });
+        onElementClick(event) {
+            // We would prefer having the index inside the callback in the template, but due to a strange way Vue is handling anynmous functions with scope slot, we need to pass the index as a data attribute or each time the parent rerender, all the children will also rerender
+            const rawIndex = event.target.dataset.wwFlexboxIndex;
+            let index = parseInt(rawIndex);
+            if (isNaN(index)) {
+                index = 0;
+            }
+            this.$emit('element-event', { type: 'click', index });
         },
     },
 };
 </script>
 
 <style lang="scss" scoped>
-.ww-flexbox {
-    display: flex;
+.-link {
+    cursor: pointer;
 }
 </style>

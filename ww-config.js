@@ -1,11 +1,10 @@
 export default {
     options: {
         lazyHydrate: true,
-        layout: ['flex', 'grid'],
+        displayAllowedValues: ['flex', 'block', 'grid', 'inline-flex', 'inline-block', 'inline-grid'],
+        linkable: true,
     },
-    inherit: {
-        type: 'ww-layout',
-    },
+    inherit: [{ type: 'ww-layout' }, { type: 'ww-background-video' }],
     editor: {
         label: {
             en: 'Flexbox',
@@ -14,8 +13,8 @@ export default {
         bubble: {
             icon: 'border',
         },
+        customStylePropertiesOrder: ['children'],
     },
-    customStylePropertiesOrder: ['children'],
     properties: {
         children: {
             label: {

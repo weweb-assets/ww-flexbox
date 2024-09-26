@@ -19,7 +19,7 @@
                 class="ww-flexbox__object"
                 :ww-responsive="`wwobject-${index}`"
                 :data-ww-flexbox-index="index"
-                @click="onElementClick"
+                @click="onElementClick(index)"
             ></wwElement>
         </template>
     </wwLayout>
@@ -65,10 +65,8 @@ export default {
         },
     },
     methods: {
-        onElementClick(event) {
+        onElementClick(index) {
             // We would prefer having the index inside the callback in the template, but due to a strange way Vue is handling anynmous functions with scope slot, we need to pass the index as a data attribute or each time the parent rerender, all the children will also rerender
-            const rawIndex = event.target.dataset.wwFlexboxIndex;
-            let index = parseInt(rawIndex);
             if (isNaN(index)) {
                 index = 0;
             }

@@ -21,7 +21,7 @@ export default {
                 en: 'Items',
                 fr: 'Items',
             },
-            type: 'Info',
+            type: 'Repeat',
             options: {
                 text: { en: 'Elements to repeat' },
             },

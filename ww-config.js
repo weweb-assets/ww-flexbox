@@ -1,7 +1,17 @@
 export default {
     options: {
         lazyHydrate: true,
-        displayAllowedValues: ['flex', 'block', 'grid', 'inline-flex', 'inline-block', 'inline-grid'],
+        displayAllowedValues: [
+            'flex',
+            'block',
+            'grid',
+            'table-cell',
+            'table-row',
+            'table-header-group',
+            'inline-flex',
+            'inline-block',
+            'inline-grid',
+        ],
         linkable: true,
     },
     inherit: [{ type: 'ww-layout' }, { type: 'ww-background-video' }],

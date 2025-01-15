@@ -1,7 +1,7 @@
 export default {
     options: {
         lazyHydrate: true,
-        displayAllowedValues: [
+        displayAllowedValues: (content, wwProps) => wwProps?.overrideDisplayValues ?? [
             'flex',
             'block',
             'grid',

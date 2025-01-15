@@ -42,7 +42,6 @@ export default {
     props: {
         content: { type: Object, required: true },
         wwElementState: { type: Object, required: true },
-        noDropzone: { type: Boolean, default: false },
         /* wwEditor:start */
         wwEditorState: { type: Object, required: true },
         /* wwEditor:end */
@@ -68,6 +67,9 @@ export default {
         },
         isFixed() {
             return this.wwElementState.props.isFixed;
+        },
+        noDropzone() {
+            return this.wwElementState.props.noDropzone;
         },
         isEditing() {
             /* wwEditor:start */

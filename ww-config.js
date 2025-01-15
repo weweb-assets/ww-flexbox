@@ -35,7 +35,7 @@ export default {
             options: {
                 text: { en: 'Elements to repeat' },
             },
-            hidden: (content, sidePanelContent, boundProps, wwProps) => !!(wwProps && wwProps.isFixed),
+            hidden: (content, sidePanelContent, boundProps, wwProps) => !!(wwProps && wwProps.isFixed) || wwProps.noDropzone,
             bindable: 'repeatable',
             defaultValue: [],
             /* wwEditor:start */

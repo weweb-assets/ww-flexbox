@@ -1,7 +1,17 @@
 export default {
     options: {
         lazyHydrate: true,
-        displayAllowedValues: ['flex', 'block', 'grid', 'inline-flex', 'inline-block', 'inline-grid'],
+        displayAllowedValues: (content, wwProps) => wwProps?.overrideDisplayValues ?? [
+            'flex',
+            'block',
+            'grid',
+            'table-cell',
+            'table-row',
+            'table-header-group',
+            'inline-flex',
+            'inline-block',
+            'inline-grid',
+        ],
         linkable: true,
     },
     inherit: [{ type: 'ww-layout' }, { type: 'ww-background-video' }],
@@ -21,11 +31,11 @@ export default {
                 en: 'Items',
                 fr: 'Items',
             },
-            type: 'Info',
+            type: 'Repeat',
             options: {
                 text: { en: 'Elements to repeat' },
             },
-            hidden: (content, sidePanelContent, boundProps, wwProps) => !!(wwProps && wwProps.isFixed),
+            hidden: (content, sidePanelContent, boundProps, wwProps) => !!(wwProps && wwProps.isFixed) || wwProps.noDropzone,
             bindable: 'repeatable',
             defaultValue: [],
             /* wwEditor:start */

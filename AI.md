@@ -1,5 +1,5 @@
 ---
-name: ww-flexbox
+name: ww-div
 description: HTML div for flexible layout management. Requires display property in styles.
 keywords:
   - html div
@@ -9,7 +9,7 @@ keywords:
   - layout
 ---
 
-#### ww-flexbox
+#### ww-div
 
 ***Description***: HTML div with configurable display properties via styles key
 
@@ -20,7 +20,7 @@ keywords:
 
 ***Children***:
   - children: Array of elements
-  - Ex: {"uid":"flexbox_1","tag":"ww-flexbox","name":"Flexbox 1 Name","styles":{"default":{ ... }},"children":{"children":[{ ... },{ ... }]}}
+  - Ex: {"uid":"div_1","tag":"ww-div","name":"Div 1 Name","styles":{"default":{ ... }},"children":{"children":[{ ... },{ ... }]}}
   - Do not forget the "children" array in the "children" key.
 
 ***Events***: none

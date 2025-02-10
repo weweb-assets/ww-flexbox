@@ -14,10 +14,10 @@ keywords:
 ***Description***: HTML div with configurable display properties via styles key
 
 ***Specifications***:
--IMPORTANT: The `display` style is mandatory in the styles.
+-IMPORTANT: The default value for `display` is `flex`, not `block`
 -IMPORTANT: The default value for `flexDirection` is `row`
--For grid column template, you can only use 2 simple formats "repeat(2,1fr)" or "1fr 1fr". Ex: repeat(auto-fill,minmax(300px,1fr)) is totally forbidden.
 -Display must be one of: `block`, `flex`, `grid`, `inline-block`, `inline-flex`, `inline-grid`, `none`
+-For grid column template, you can only use 2 simple formats "repeat(2,1fr)" or "1fr 1fr". Ex: repeat(auto-fill,minmax(300px,1fr)) is totally forbidden.
 
 ***Children***:
   - children: Array of elements

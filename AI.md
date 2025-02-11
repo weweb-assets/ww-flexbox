@@ -16,7 +16,19 @@ keywords:
 ***Specifications***:
 -IMPORTANT: The default value for `flexDirection` is `row`
 -Display must be one of: `block`, `flex`, `grid`, `inline-block`, `inline-flex`, `inline-grid`, `none`
--For grid column template, you can only use 2 simple formats "repeat(2,1fr)" or "1fr 1fr". Ex: repeat(auto-fill,minmax(300px,1fr)) is totally forbidden.
+-For grid column template, you can only use 2 simple formats "repeat(2,1fr)" or "1fr 1fr":
+<gridColumnTemplate_examples>
+    <example>
+        "gridTemplateColumns":"repeat(2,1fr)"
+    </example>
+    <example>
+        "gridTemplateColumns":"1fr 1fr"
+    </example>
+    <bad_example>
+        "gridTemplateColumns":"repeat(auto-fill, minmax(300px, 1fr))"
+        //This is wrong because this format is not supported.
+    </bad_example>
+</gridColumnTemplate_examples>
 
 ***Children***:
   - children: Array of elements

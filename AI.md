@@ -31,7 +31,7 @@ keywords:
 </gridColumnTemplate_examples>
 
 ***Children***:
-  - children: Array of elements
+  - children: Array of elements. Mandatory, must be set event if there are no children.
   - Ex: {"uid":"div_1","tag":"ww-div","name":"Div 1 Name","styles":{"default":{ ... }},"children":{"children":[{ ... },{ ... }]}}
   - Do not forget the "children" array in the "children" key.
 

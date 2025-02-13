@@ -1,0 +1,40 @@
+---
+name: ww-div
+description: HTML div for flexible layout management. Requires display property in styles.
+keywords:
+  - html div
+  - display
+  - flex
+  - grid
+  - layout
+---
+
+#### ww-div
+
+***Description***: HTML div with configurable display properties via styles key
+
+***Specifications***:
+-IMPORTANT: The default value for `flexDirection` is `row`
+-Display must be one of: `block`, `flex`, `grid`, `inline-block`, `inline-flex`, `inline-grid`, `none`
+-For grid column template, you can only use 2 simple formats "repeat(2,1fr)" or "1fr 1fr":
+<gridColumnTemplate_examples>
+    <example>
+        "gridTemplateColumns":"repeat(2,1fr)"
+    </example>
+    <example>
+        "gridTemplateColumns":"1fr 1fr"
+    </example>
+    <bad_example>
+        "gridTemplateColumns":"repeat(auto-fill, minmax(300px, 1fr))"
+        //This is wrong because this format is not supported.
+    </bad_example>
+</gridColumnTemplate_examples>
+
+***Children***:
+  - children: Array of elements. Mandatory, must be set event if there are no children.
+  - Ex: {"uid":"div_1","tag":"ww-div","name":"Div 1 Name","styles":{"default":{ ... }},"children":{"children":[{ ... },{ ... }]}}
+  - Do not forget the "children" array in the "children" key.
+
+***Events***: none
+
+***Variables***: none

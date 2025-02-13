@@ -1,5 +1,16 @@
 <template>
+    <wwSimpleLayout
+        :tag="tag"
+        v-if="noDropzone"
+        class="ww-flexbox"
+        ww-responsive="wwLayoutSlot"
+        v-bind="properties"
+        :class="{ '-link': hasLink && !isEditing }"
+    >
+        <slot></slot>
+    </wwSimpleLayout>
     <wwLayout
+        v-else
         class="ww-flexbox"
         path="children"
         :direction="content.direction"
@@ -11,6 +22,7 @@
     >
         <template #header>
             <wwBackgroundVideo v-if="backgroundVideo" :video="backgroundVideo"></wwBackgroundVideo>
+            <slot v-if="!noDropzone"></slot>
         </template>
         <template #default="{ item, index, itemStyle }">
             <wwElement
@@ -56,6 +68,9 @@ export default {
         isFixed() {
             return this.wwElementState.props.isFixed;
         },
+        noDropzone() {
+            return this.wwElementState.props.noDropzone;
+        },
         isEditing() {
             /* wwEditor:start */
             return this.wwEditorState.editMode === wwLib.wwEditorHelper.EDIT_MODES.EDITION;
@@ -68,7 +83,7 @@ export default {
         onElementClick(event) {
             // We would prefer having the index inside the callback in the template, but due to a strange way Vue is handling anynmous functions with scope slot, we need to pass the index as a data attribute or each time the parent rerender, all the children will also rerender
             let rawIndex = event.currentTarget.dataset.wwFlexboxIndex;
-            
+
             let index = parseInt(rawIndex);
             if (isNaN(index)) {
                 index = 0;

@@ -16,7 +16,7 @@ keywords:
 ***Specifications***:
 -IMPORTANT: The default value for `flexDirection` is `row`
 -Display must be one of: `block`, `flex`, `grid`, `inline-block`, `inline-flex`, `inline-grid`, `none`
--Display must always be in the styles, even when binded
+-Display must always be in the styles, even when binded : {"uid":"div_1","tag":"ww-div","name":"Div 1 Name","styles":{"default":{ "display": {"wwFormula": "```variables['isDisplayed']```"}, ... }},"children":{"children":[{ ... },{ ... }]}}
 -For grid column template, you can only use 2 simple formats "repeat(2,1fr)" or "1fr 1fr":
 <gridColumnTemplate_examples>
     <example>

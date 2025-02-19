@@ -16,6 +16,7 @@ keywords:
 ***Specifications***:
 -IMPORTANT: The default value for `flexDirection` is `row`
 -Display must be one of: `block`, `flex`, `grid`, `inline-block`, `inline-flex`, `inline-grid`, `none`
+-Display must always be in the styles, even when binded
 -For grid column template, you can only use 2 simple formats "repeat(2,1fr)" or "1fr 1fr":
 <gridColumnTemplate_examples>
     <example>
@@ -32,7 +33,7 @@ keywords:
 
 ***Children***:
   - children: Array of elements. Mandatory, must be set event if there are no children.
-  - Ex: {"uid":"div_1","tag":"ww-div","name":"Div 1 Name","styles":{"default":{ ... }},"children":{"children":[{ ... },{ ... }]}}
+  - Ex: {"uid":"div_1","tag":"ww-div","name":"Div 1 Name","styles":{"default":{ "display": "...", ... }},"children":{"children":[{ ... },{ ... }]}}
   - Do not forget the "children" array in the "children" key.
 
 ***Events***: none

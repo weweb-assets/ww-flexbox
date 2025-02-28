@@ -43,3 +43,6 @@ keywords:
 ***Events***: none
 
 ***Variables***: none
+
+
+*** CRITICAL *** : YOU MUST ALWAYS SET THE `children` KEY!

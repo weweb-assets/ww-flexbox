@@ -14,8 +14,8 @@ keywords:
 ***Description***: HTML div with configurable display properties via styles key
 
 ***Specifications***:
--IMPORTANT: The default value for `flexDirection` is `row`
--Display must be one of: `block`, `flex`, `grid`, `inline-block`, `inline-flex`, `inline-grid`, `none` or binding return one of the values.
+-IMPORTANT: There is no default value for `flexDirection`, it must be set in the styles.
+-IMPORTANT: Display must be defined and one of: `block`, `flex`, `grid`, `inline-block`, `inline-flex`, `inline-grid`, `none` or binding return one of the values.
 -Display must always be in the styles, even when binded : {"uid":"div_1","tag":"ww-div","name":"Div 1 Name","styles":{"default":{ "display": {"wwFormula": "```variables['isDisplayed']```"}, ... }},"children":{"children":[{ ... },{ ... }]}}
 -For grid column template, you can only use 2 simple formats "repeat(2,1fr)" or "1fr 1fr":
 <gridTemplateColumns_examples>
@@ -44,5 +44,12 @@ keywords:
 
 ***Variables***: none
 
+*** CRITICAL RULE - NO EXCEPTIONS ***: Every ww-div that uses any flex-related style property (e.g., flex: 1, align-self, order, display: flex...) **MUST** explicitly define flex-direction style property.
+✅ If a ww-div has any flex-related styles, ensure its parent flex container has a clearly set flex-direction.
+✅ This applies even if the ww-div itself does not set display: flex.
+✅ Never assume a default flex-direction value specify it explicitly!
+🔴 Missing flex-direction cause unexpected layout issues.
 
-*** CRITICAL *** : YOU MUST ALWAYS SET THE `children` KEY!
+*** CRITICAL RULE - NO EXCEPTIONS *** : YOU MUST ALWAYS SET THE `children` KEY!
+✅ Even if there are no children, you must set the `children` key with an empty array.
+🔴 Missing the `children` key cause unexpected layout issues.

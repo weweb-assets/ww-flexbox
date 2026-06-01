@@ -41,7 +41,8 @@
         "Display property must always be included in styles even when bound",
         "Grid template only supports simplified formats: repeat(2,1fr) or 1fr 1fr",
         "For responsive designs, define gridTemplateColumns across different breakpoints",
-        "Children slot must be present even if empty"
+        "Children slot must be present even if empty",
+        "To center a single child element (e.g. an icon), set justifyContent: 'center' and alignItems: 'center' on the div wrapper."
     ],
     "examples": []
 }
